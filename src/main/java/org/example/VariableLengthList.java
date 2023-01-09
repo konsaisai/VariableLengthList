@@ -7,12 +7,12 @@ public class VariableLengthList {
     private int size;
     private int [] elements;
 
-    public void VariableLengthList() {
+     VariableLengthList() {
         this.size = 0;
         this.elements = new int[1];
     }
 
-    public void VariableLengthList(int init) {
+    VariableLengthList(int init) {
         this.size = 0;
         this.elements = new int[init];
     }
@@ -38,11 +38,50 @@ public class VariableLengthList {
     }
 
     public String toString() {
-        String[] strArray = new String[this.elements.length];
-        for (int i = 0; i < this.elements.length; i++) {
+        String[] strArray = new String[this.size];
+        for (int i = 0; i < this.size; i++) {
             strArray[i] = String.valueOf(this.elements[i]);
         }
         return Arrays.toString(strArray);
     }
 
+    public void add(int element) {
+        if (this.size == this.elements.length) {
+            //リストの長さを２倍にして詰め直す
+            int[] wkElements = new int[(size * 2)];
+            System.arraycopy(this.elements, 0, wkElements, 0, this.elements.length);
+            wkElements[this.size] = element;
+            this.elements = wkElements;
+
+        } else {
+            //リストに追加する
+            this.elements[this.size] = element;
+        }
+        this.size++;
+    }
+
+    public void addAll(int[] newElements) {
+         for (int element: newElements) {
+             add(element);
+         }
+    }
+
+    public void update(int index, int newElement) throws IndexOutOfBoundsException {
+        if (0 <= index && index < this.size) {
+            this.elements[index] = newElement;
+        } else {
+            throw new IndexOutOfBoundsException("Error!!!IndexOutOfBounds");
+        }
+    }
+
+    public void remove(int index) throws IndexOutOfBoundsException {
+        if (0 <= index && index < this.size) {
+            for (int i = index; i < this.size - 1; i++) {
+                this.elements[i] = this.elements[i + 1];
+            }
+            this.size--;
+        } else {
+            throw new IndexOutOfBoundsException("Error!!!IndexOutOfBounds");
+        }
+    }
 }
