@@ -1,18 +1,16 @@
 package org.example;
 
-import java.util.Arrays;
-
 //https://gist.github.com/athos/3f9a10c2ed377289061f86c7c670f00e
-public class VariableLengthList {
+public class VariableLengthArrayList {
     private int size;
     private int [] elements;
 
-     VariableLengthList() {
+     VariableLengthArrayList() {
         this.size = 0;
         this.elements = new int[1];
     }
 
-    VariableLengthList(int init) {
+    VariableLengthArrayList(int init) {
         this.size = 0;
         this.elements = new int[init];
     }
@@ -26,6 +24,7 @@ public class VariableLengthList {
     }
 
     public int get(int index) throws IndexOutOfBoundsException {
+         //try catchではなく自身でエラー処理を行うのは、TryCatchに依存しているとどういう時にエラーになるのかが見えにくくなるため（自身でコントロール）
         if (index < 0 || this.size <= index) {
             throw new IndexOutOfBoundsException("Error!!!IndexOutOfBounds");
         }
@@ -33,15 +32,16 @@ public class VariableLengthList {
     }
 
     public String toString() {
-        StringBuilder str = new StringBuilder("[");
+         // 文字列の結合は+だと毎回文字列を作成してしまうためStringBuilderを使用する(速度を速くする)
+        StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < this.size; i++) {
-            str.append(this.elements[i]);
+            sb.append(this.elements[i]);
             if (i < this.size -1) {
-                str.append(", ");
+                sb.append(", ");
             }
         }
-        str.append("]");
-        return str.toString();
+        sb.append("]");
+        return sb.toString();
     }
 
     public void add(int element) {
