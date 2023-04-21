@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class VariableLengthListArrayTest {
+class VariableLengthArrayListTest {
 
     //@Testを記載したメソッドのみ実行される
     //@Test
