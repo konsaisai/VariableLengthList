@@ -25,7 +25,6 @@ public class VariableLengthList {
         return this.size == 0;
     }
 
-    //FIXME: 範囲のチェックを自分でやる ⇨Done
     public int get(int index) throws IndexOutOfBoundsException {
         if (index < 0 || this.size <= index) {
             throw new IndexOutOfBoundsException("Error!!!IndexOutOfBounds");
@@ -33,20 +32,18 @@ public class VariableLengthList {
         return this.elements[index];
     }
 
-    //FIXME: Arrays.toString()を使わずに実装し直す ⇨Done
     public String toString() {
-        String str = "[";
+        StringBuilder str = new StringBuilder("[");
         for (int i = 0; i < this.size; i++) {
-            str = str + String.valueOf(this.elements[i]);
+            str.append(this.elements[i]);
             if (i < this.size -1) {
-                str = str + ", ";
+                str.append(", ");
             }
         }
-        str = str + "]";
-        return str;
+        str.append("]");
+        return str.toString();
     }
 
-    //FIXME: 要素の追加をif文の外に出す　⇨Done
     public void add(int element) {
         if (this.size == this.elements.length) {
             //リストの長さを２倍にして詰め直す
@@ -65,7 +62,6 @@ public class VariableLengthList {
          }
     }
 
-    //FIXME: ネスト ⇨Done
     public void update(int index, int newElement) throws IndexOutOfBoundsException {
         if (index < 0 || this.size <= index) {
             throw new IndexOutOfBoundsException("Error!!!IndexOutOfBounds");
@@ -73,7 +69,6 @@ public class VariableLengthList {
         this.elements[index] = newElement;
     }
 
-    //FIXME: ネスト ⇨Done
     public void remove(int index) throws IndexOutOfBoundsException {
         if (index < 0 || this.size <= index) {
             throw new IndexOutOfBoundsException("Error!!!IndexOutOfBounds");
