@@ -4,27 +4,21 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class VariableLengthListTest {
+class VariableLengthListArrayTest {
 
     //@Testを記載したメソッドのみ実行される
     //@Test
-    @DisplayName("sample")
-    public void testSample() {
-        var calc = new VariableLengthList();
-        assertEquals(5, calc.add(2, 3));
-    }
-
     @Test
     @DisplayName("CountMethodTest")
     public void testCount() {
-        var list = new VariableLengthList();
+        var list = new VariableLengthArrayList();
         assertEquals(0, list.count());
     }
 
     @Test
     @DisplayName("isEmptyTest")
     public void testIsEmpty() {
-        var list = new VariableLengthList();
+        var list = new VariableLengthArrayList();
         assertTrue(list.isEmpty());
         list.add(10);
         assertFalse(list.isEmpty());
@@ -33,7 +27,7 @@ class VariableLengthListTest {
     @Test
     @DisplayName("add & get & count & toString")
     public void testAddAndGet() {
-        var list = new VariableLengthList();
+        var list = new VariableLengthArrayList();
         list.add(2);
         list.add(3);
         list.add(8);
@@ -47,14 +41,14 @@ class VariableLengthListTest {
     @Test
     @DisplayName("OutOfBounds")
     void testOutOfBounds() {
-        var list = new VariableLengthList();
+        var list = new VariableLengthArrayList();
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(3));
     }
 
     @Test
     @DisplayName("AddAllTest")
     void testAddAll() {
-        var list = new VariableLengthList(3);
+        var list = new VariableLengthArrayList(3);
         list.addAll(new int[] {1, 2, 3, 4, 10});
         assertEquals("[1, 2, 3, 4, 10]", list.toString());
         assertEquals(1, list.get(0));
@@ -68,7 +62,7 @@ class VariableLengthListTest {
     @Test
     @DisplayName("UpdateTest")
     void testUpdate() {
-        var list = new VariableLengthList();
+        var list = new VariableLengthArrayList();
         list.addAll(new int[] {1, 2, 3, 4, 10});
         assertEquals(10, list.get(4));
         list.update(4, 39);
@@ -80,7 +74,7 @@ class VariableLengthListTest {
     @Test
     @DisplayName("RemoveTest")
     void removeTest() {
-        var list = new VariableLengthList();
+        var list = new VariableLengthArrayList();
         list.addAll(new int[] {1, 2, 3, 4, 10, 11, 12, 13});
         assertEquals(8, list.count());
         list.remove(6);
