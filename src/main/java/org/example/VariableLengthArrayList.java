@@ -1,7 +1,7 @@
 package org.example;
 
 //https://gist.github.com/athos/3f9a10c2ed377289061f86c7c670f00e
-public class VariableLengthArrayList {
+public class VariableLengthArrayList implements VariableLengthList {
     private int size;
     private int [] elements;
 
@@ -44,7 +44,7 @@ public class VariableLengthArrayList {
         return sb.toString();
     }
 
-    public void add(int element) {
+    public void add(int value) {
         if (this.size == this.elements.length) {
             //リストの長さを２倍にして詰め直す
             int[] wkElements = new int[(size * 2)];
@@ -52,7 +52,7 @@ public class VariableLengthArrayList {
             this.elements = wkElements;
         }
         //リストに追加する
-        this.elements[this.size] = element;
+        this.elements[this.size] = value;
         this.size++;
     }
 

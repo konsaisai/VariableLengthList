@@ -5,7 +5,7 @@ class Element {
     Element next;
 }
 
-public class VariableLengthLinkedList {
+public class VariableLengthLinkedList implements VariableLengthList {
     private Element head;
     private Element tail;
 
