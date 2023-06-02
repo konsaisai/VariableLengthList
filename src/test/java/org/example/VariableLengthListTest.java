@@ -183,6 +183,11 @@ public class VariableLengthListTest {
 
         linkedList.remove(3);
         assertFalse(Controller.equals(arrayList, linkedList));
+
+        assertThrows( NullPointerException.class, () -> {
+            Controller.equals(null, linkedList);
+            throw new NullPointerException();
+        });
     }
 
 }
