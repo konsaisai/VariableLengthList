@@ -176,6 +176,7 @@ public class VariableLengthListTest {
     void equalsTest(){
         var arrayList = new VariableLengthArrayList();
         var linkedList = new VariableLengthLinkedList();
+        assertTrue(Controller.equals(arrayList, linkedList));
         arrayList.addAll(new int[] {1, 2, 3, 4, 10, 11, 12, 13});
         linkedList.addAll(new int[] {1, 2, 3, 4, 10, 11, 12, 13});
         assertTrue(Controller.equals(arrayList, linkedList));
