@@ -180,6 +180,8 @@ public class VariableLengthListTest {
         linkedList.addAll(new int[] {1, 2, 3, 4, 10, 11, 12, 13});
         assertTrue(Controller.equals(arrayList, linkedList));
 
+        linkedList.remove(3);
+        assertFalse(Controller.equals(arrayList, linkedList));
     }
 
 }
