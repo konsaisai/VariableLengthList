@@ -174,20 +174,17 @@ public class VariableLengthListTest {
 
     @Test
     void equalsTest(){
-        var arrayList = new VariableLengthArrayList();
-        var linkedList = new VariableLengthLinkedList();
-        assertTrue(Controller.equals(arrayList, linkedList));
+        VariableLengthList arrayList = new VariableLengthArrayList();
+        VariableLengthList linkedList = new VariableLengthLinkedList();
+        assertEquals(linkedList, arrayList);
+
         arrayList.addAll(new int[] {1, 2, 3, 4, 10, 11, 12, 13});
         linkedList.addAll(new int[] {1, 2, 3, 4, 10, 11, 12, 13});
-        assertTrue(Controller.equals(arrayList, linkedList));
+        assertEquals(arrayList, linkedList);
 
         linkedList.remove(3);
-        assertFalse(Controller.equals(arrayList, linkedList));
-
-        assertThrows( NullPointerException.class, () -> {
-            Controller.equals(null, linkedList);
-            throw new NullPointerException();
-        });
+        assertNotEquals(arrayList, linkedList);
+        assertThrows(NullPointerException.class, () -> linkedList.equals(null));
     }
 
 }

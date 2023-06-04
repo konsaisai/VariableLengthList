@@ -27,7 +27,7 @@ public class VariableLengthLinkedList implements VariableLengthList {
         return count;
     }
 
-    public boolean isEmpty() { return this.head == null; }
+    public boolean isEmpty() {return this.head == null;}
 
     public int get(int index) throws IndexOutOfBoundsException {
         if (this.head == null) {
@@ -45,6 +45,7 @@ public class VariableLengthLinkedList implements VariableLengthList {
         return element.element;
     }
 
+    @Override
     public String toString() {
         // 文字列の結合は+だと毎回文字列を作成してしまうためStringBuilderを使用する(速度を速くする)
         StringBuilder sb = new StringBuilder("[");
@@ -74,12 +75,14 @@ public class VariableLengthLinkedList implements VariableLengthList {
         this.tail = element;
     }
 
+    @Override
     public void addAll(int[] newElements) {
         for (int element: newElements) {
             add(element);
         }
     }
 
+    @Override
     public void update(int index, int newElement) throws IndexOutOfBoundsException {
         if (this.head == null) {
             throw new IndexOutOfBoundsException("Error!!!IndexOutOfBounds");
@@ -96,6 +99,7 @@ public class VariableLengthLinkedList implements VariableLengthList {
         element.element = newElement;
     }
 
+    @Override
     public void remove(int index) throws IndexOutOfBoundsException {
         if (this.head == null) {
             throw new IndexOutOfBoundsException("Error!!!IndexOutOfBounds");
@@ -122,5 +126,10 @@ public class VariableLengthLinkedList implements VariableLengthList {
         } else {
             element.next = element.next.next;
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return VariableLengthList.equals(this, (VariableLengthList)obj);
     }
 }

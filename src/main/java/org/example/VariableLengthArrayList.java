@@ -31,6 +31,7 @@ public class VariableLengthArrayList implements VariableLengthList {
         return this.elements[index];
     }
 
+    @Override
     public String toString() {
          // 文字列の結合は+だと毎回文字列を作成してしまうためStringBuilderを使用する(速度を速くする)
         StringBuilder sb = new StringBuilder("[");
@@ -77,5 +78,10 @@ public class VariableLengthArrayList implements VariableLengthList {
             this.elements[i] = this.elements[i + 1];
         }
         this.size--;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return VariableLengthList.equals(this, (VariableLengthList)obj);
     }
 }
